@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Layout, Header, Content, Grid, Cell } from 'react-mdl';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="demo-big-content">
+            <Layout>
+                <Header className="header-color" title="Movie roulette" scroll>
+                </Header>
+                <Content>
+                    <div className="landing-body">   
+                        <div className="banner-text">   
+                            <button className="button-css">GO</button>
+                        </div>                               
+                    </div>
+                </Content>
+            </Layout>
+        </div>
+    );
 }
 
 export default App;

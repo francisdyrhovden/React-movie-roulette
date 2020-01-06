@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+.header-color {
+  background: #16222A;
+  background: -webkit-linear-gradient(to right, rgb(58, 115, 93), #16222A);
+  background: linear-gradient(to right, rgb(28, 65, 50), #16222A);    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.landing-body {
+  background: #16222A;
+  background: -webkit-linear-gradient(to right, rgb(58, 115, 93), #16222A);
+  background: linear-gradient(to right, rgb(28, 65, 50), #16222A);
+  
+  margin: auto;
+  width: 100%;
+  height: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 15em;
 }
 
-.App-link {
-  color: #61dafb;
+.landing-grid {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.banner-text {
+    color: white;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 30px 26px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 308px;
+    box-sizing: border-box;
+    width: 75%;
+    margin: auto;
+}
+
+
+.banner-text p {
+  font-size: 15px;
+  padding: 30px;
+}
+
+.button-css {
+  border: none;
+  border-radius: 60px;
+  font-size: 14px;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-family: 'ProximaNova-Bold',Arial,sans-serif;
+  -webkit-transition: box-shadow 90ms,-webkit-transform 90ms;
+  -webkit-transition: box-shadow 90ms,transform 90ms;
+  transition: box-shadow 90ms,transform 90ms;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  color: #081118;
+  background: linear-gradient(128deg,#00e18c,#00e36a);
+  box-shadow: 0 9px 24px 0 rgba(0,0,0,0.43);
+  width: 219px;
+  height: 40px;
 }
