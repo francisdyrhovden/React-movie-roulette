@@ -70,16 +70,15 @@
     margin: 0 auto;
     position: relative;
     -webkit-font-smoothing: antialiased;
+    padding-left: 10%;
 
 }
 
 .css-box div {
     max-width: 978px;
     width: 100%;
-    margin: 64px auto 70px;
     padding: 0 38px;
-    color: rgba(255,255,255,0.7);
-    box-sizing: border-box;
+    
 }
 
 .css-left {

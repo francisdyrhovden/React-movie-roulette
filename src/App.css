@@ -3,7 +3,7 @@
   color: white;  
 }
 
-.landing-body {
+.background {
   background: #16222A;
   background: -webkit-linear-gradient(to right, rgb(58, 115, 93), #16222A);
   background: linear-gradient(to right, rgb(28, 65, 50), #16222A);
@@ -77,4 +77,5 @@
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  font-weight: bold;
 }
