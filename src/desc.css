@@ -129,10 +129,21 @@
         -ms-flex-align: center;
         align-items: center;
         padding: 16px 0;
-         margin: 0;
+        margin: 0;
 
         position: absolute;
         top: 30%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);      
+}
+
+.css-movie {
+    object-fit: cover;
+    object-position: center center;
+    width: 20%;
+    height: 20%;
+    transition-duration: 350ms;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    
 }

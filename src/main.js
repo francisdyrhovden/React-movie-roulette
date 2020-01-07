@@ -5,10 +5,6 @@ import Movie from './movie';
 
 export class Main extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div class="background">
