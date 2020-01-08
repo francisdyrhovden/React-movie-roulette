@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import './desc.css';
 
 
 class Movie extends Component {
@@ -18,7 +17,6 @@ class Movie extends Component {
                     maxId: data.id
                 });
             });
-
     }
 
     randomNumber() {
@@ -49,14 +47,25 @@ class Movie extends Component {
 
     onRender = (res) => {
 
-        let year = (res.release_date).substring(0,4);
-        let genre = [res.genres];
-        console.log("Genre: " + genre);
+        let year = (res.release_date).substring(0, 4);
+        let genres = res.genres.map(genre => (genre.name) + " ");
+
         return (
-            <div>
-                <img src={this.imageUrl + res.poster_path} class="css-movie" alt="" />
-                <h3>{res.title}</h3>
-                <p>{year} IMDB: {res.vote_average}/10 {res.genres.name}</p>
+            <div class="css-right">
+                <div class="css-picture">
+                    <div class="css-pictures">
+                        <img src={this.imageUrl + res.poster_path} class="css-movie" alt="" />
+                    </div>
+                </div>
+                <div class="css-info">
+                    <h3>{res.title}</h3>
+                    <div class="css-movie-stats">
+                        <p>{year}&emsp;IMDB: {res.vote_average}/10&emsp;{genres}</p>
+                    </div>
+                    <div class="css-overview">
+                        <p>{res.overview}</p>
+                    </div>
+                </div>
             </div>);
     };
 
@@ -64,14 +73,14 @@ class Movie extends Component {
         return (
             <div class="css-box">
                 <div class="css-left">
-                    <button class="button-css" onClick={this.onGO}>GO</button>
+                    <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
-                <div class="css-right">
-                    <div class="css-result">
-                        <div>
-                            {this.state.movie ? this.onRender(this.state.movie) : ''}
+                <div class="css-entrybox">
+                    {this.state.movie ? this.onRender(this.state.movie) :
+                        <div class="css-entry">
+                            What are you waiting for? Smash that button.
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         );

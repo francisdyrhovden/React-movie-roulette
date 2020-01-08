@@ -10,7 +10,7 @@ function App() {
     return (
         <div>
             <Layout>
-                <Header class="header-color" title="Movie roulette" scroll>
+                <Header class="header-color" title="" scroll>
                 </Header>
                 <Content>
                     <Main />
