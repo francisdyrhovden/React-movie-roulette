@@ -52,9 +52,9 @@ class Movie extends Component {
 
         return (
             <div class="css-right">
-                <div class="css-picture">
-                    <div class="css-pictures">
-                        <img src={this.imageUrl + res.poster_path} class="css-movie" alt="" />
+                <div class="css-cover-container">
+                    <div class="css-cover-fill">
+                        <img src={this.imageUrl + res.poster_path} class="css-cover" alt="" />
                     </div>
                 </div>
                 <div class="css-info">
