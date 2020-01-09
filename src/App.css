@@ -190,6 +190,13 @@
   font-size: 11px;
 }
 
+.css-movie-stats span {
+  line-height: 18px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-right: 10px;
+}
+
 .css-overview {
   line-height: 18px;
   font-size: 14px;

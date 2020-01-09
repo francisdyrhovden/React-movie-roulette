@@ -49,6 +49,9 @@ class Movie extends Component {
 
         let year = (res.release_date).substring(0, 4);
         let genres = res.genres.map(genre => (genre.name) + " ");
+        let hours = Math.floor(res.runtime / 60);
+        let mins = res.runtime % 60;
+
 
         return (
             <div class="css-right">
@@ -60,7 +63,10 @@ class Movie extends Component {
                 <div class="css-info">
                     <h3>{res.title}</h3>
                     <div class="css-movie-stats">
-                        <p>{year}&emsp;IMDB: {res.vote_average}/10&emsp;{genres}</p>
+                        <span>{year}</span>
+                        <span>IMDB: {res.vote_average}/10</span>
+                        <span>{hours}h {mins}m</span>
+                        <span>{genres}</span>
                     </div>
                     <div class="css-overview">
                         <p>{res.overview}</p>
