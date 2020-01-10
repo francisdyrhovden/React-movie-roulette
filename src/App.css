@@ -129,6 +129,33 @@
   justify-content: space-between;
 }
 
+.css-imdb-rating {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+  height: 32px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.css-imdb-rating p {
+  width: 53px;
+  min-width: 53px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(255,255,255,0.8);
+  -webkit-letter-spacing: 1.2px;
+  -moz-letter-spacing: 1.2px;
+  -ms-letter-spacing: 1.2px;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+  margin-right: 28px;
+}
+
 .css-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -142,9 +169,10 @@
   min-height: 90px;
 }
 
-.css-right h3 {
+.css-right h2 {
   font-size: 24px;
   margin-bottom: 13px;
+  margin-top: 0%;
   max-height: 2em;
   flex-shrink: 0;
   color: white;
@@ -166,7 +194,6 @@
   height: 100%;
   background-color: rgba(43, 50, 57, 0.8);
   overflow: hidden;
-  
 }
 
 .css-cover {
@@ -188,6 +215,12 @@
   display: flex;
   flex-wrap: wrap;
   font-size: 11px;
+  max-height: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .css-movie-stats span {
@@ -200,8 +233,12 @@
 .css-overview {
   line-height: 18px;
   font-size: 14px;
-  max-height: 90px;
+  max-height: 144px;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .css-entry {
