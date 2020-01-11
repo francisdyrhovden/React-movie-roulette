@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spinner } from 'react-mdl';
 import './App.css';
 
 
@@ -8,7 +9,9 @@ class Movie extends Component {
         super(props);
         this.state = {
             movie: '', 
-            imdb: ''
+            imdb: '',
+            clicked: false,
+            msg: 'What are you waiting for? Smash that button.'
         };
         this.handleChange = this.handleChange.bind(this);
         this.onGO = this.onGO.bind(this);
@@ -37,16 +40,20 @@ class Movie extends Component {
     }
 
     onGO = async () => {
+        this.setState({clicked: true});
+        console.log("clicked: " + this.state.clicked);
         this.getMaxId();
         const query = `${this.apiUrl}${this.randomNumber()}?api_key=${this.apiKey}`;
         fetch(query)
             .then(res => res.json())
             .then((data) => {
-                if (data.status_code !== 34 && data.runtime >= 60 && data.poster_path !== null) { /* Checks if a movie is found and picture is available */
-                    if ( data.vote_average >= this.state.imdb){
+                if (data.status_code !== 34 && data.runtime >= 60 && data.poster_path !== null && data.adult === false) { /* Checks if a movie is found and picture is available */
+                    if ( data.vote_average > this.state.imdb){
                         this.setState({
                             movie: data
                         });
+                    } else {
+                        this.onGO();
                     }
                 } else {
                     this.onGO();
@@ -84,12 +91,17 @@ class Movie extends Component {
             </div>);
     };
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({
             imdb: event.target.value
         });
-        console.log("IMDB: " + this.state.imdb);
     };
+
+    componentDidMount(){
+        if (this.state.clicked){
+            this.setState({msg: '<Spinner />'});
+        }
+    }
 
     render() {
         return (
@@ -99,7 +111,7 @@ class Movie extends Component {
                         <p>IMDB</p>
                         <div style={{ width: '100%' }}>
                             <div style={{ position: 'relative', padding: '8px 10px 24px 16px' }}>
-                                <select id="lang" onChange={this.handleChange} value={this.state.imdb}>
+                                <select onChange={this.handleChange} >
                                     <option value="0">Under construction</option>
                                     <option value="9">9 ></option>
                                     <option value="8">8 ></option>
@@ -114,7 +126,7 @@ class Movie extends Component {
                 <div class="css-entrybox">
                     {this.state.movie ? this.onRender(this.state.movie) :
                         <div class="css-entry">
-                            What are you waiting for? Smash that button.
+                            {this.state.msg}
                         </div>
                     }
                 </div>
