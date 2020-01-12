@@ -106,7 +106,7 @@ class Movie extends Component {
                         <div style={{ width: '100%' }}>
                             <div style={{ position: 'relative', padding: '8px 10px 24px 16px' }}>
                                 <select onChange={this.handleChange} >
-                                    <option value="0">Under construction</option>
+                                    <option value="0">Any score</option>
                                     <option value="9">9 ></option>
                                     <option value="8">8 ></option>
                                     <option value="7">7 ></option>
