@@ -10,8 +10,7 @@ class Movie extends Component {
         this.state = {
             movie: '', 
             imdb: '',
-            clicked: false,
-            msg: 'What are you waiting for? Smash that button.'
+            clicked: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.onGO = this.onGO.bind(this);
@@ -50,7 +49,8 @@ class Movie extends Component {
                 if (data.status_code !== 34 && data.runtime >= 60 && data.poster_path !== null && data.adult === false) { /* Checks if a movie is found and picture is available */
                     if ( data.vote_average > this.state.imdb){
                         this.setState({
-                            movie: data
+                            movie: data,
+                            clicked: false
                         });
                     } else {
                         this.onGO();
@@ -97,12 +97,6 @@ class Movie extends Component {
         });
     };
 
-    componentDidMount(){
-        if (this.state.clicked){
-            this.setState({msg: '<Spinner />'});
-        }
-    }
-
     render() {
         return (
             <div class="css-box">
@@ -124,10 +118,15 @@ class Movie extends Component {
                     <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
                 <div class="css-entrybox">
-                    {this.state.movie ? this.onRender(this.state.movie) :
-                        <div class="css-entry">
-                            {this.state.msg}
-                        </div>
+                    {this.state.movie ?
+                        this.state.clicked ? 
+                            <div class="css-entry">
+                                <Spinner />
+                            </div> :
+                            this.onRender(this.state.movie) :
+                    <div class="css-entry">
+                        {this.state.clicked ? <Spinner /> : <p>What are you waiting for? Smash that button.</p>}
+                    </div>
                     }
                 </div>
             </div>
