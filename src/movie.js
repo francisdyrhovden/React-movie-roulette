@@ -117,9 +117,10 @@ class Movie extends Component {
                     <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
                 <div class="css-entrybox">
-                    {this.state.movie ?
+                    {/* Displaying either a welcome text, a loading-spinner or a movie depending on the states of the component */}
+                    {this.state.movie ?             
                         this.state.clicked ? 
-                            <div class="css-entry">
+                            <div class="css-entry">             
                                 <Spinner />
                             </div> :
                             this.onRender(this.state.movie) :
