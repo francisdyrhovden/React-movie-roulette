@@ -40,7 +40,6 @@ class Movie extends Component {
 
     onGO = async () => {
         this.setState({clicked: true});
-        console.log("clicked: " + this.state.clicked);
         this.getMaxId();
         const query = `${this.apiUrl}${this.randomNumber()}?api_key=${this.apiKey}`;
         fetch(query)
