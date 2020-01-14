@@ -4,7 +4,6 @@ import './App.css';
 
 
 class Movie extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +22,7 @@ class Movie extends Component {
     apiKey = '4b7b3970bdc784da1f0944241ca24bf9';
     imageUrl = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
 
-
+    /* Fetches and saves the latest movie´s id */
     getMaxId() {
         fetch(`${this.apiUrl}latest?api_key=${this.apiKey}`)
             .then(res => res.json())
@@ -34,6 +33,7 @@ class Movie extends Component {
             });
     }
 
+    /* Fetches the current genres available */
     getGenres() {
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}`)
             .then(res => res.json())
@@ -44,6 +44,7 @@ class Movie extends Component {
             });
     }
 
+    /* Genereates a random number between 1 and the id for the latest movie */
     randomNumber() {
         const min = 1;
         let max = this.state.maxId;
@@ -52,47 +53,44 @@ class Movie extends Component {
         return rand;
     }
 
-    genreCheck(genres) {
-       let list = genres.map(genre => genre.name);
-       return list.includes(this.state.genre);
+    /* Checks if movie thats found contains the chosen genre */
+    validGenre(genres) {
+        let list = genres.map(genre => genre.name);
+        return list.includes(this.state.genre);
     }
 
+    /* Checks if a movie is found and the cover is available. Prevents adult movies and movies shorter than 60 minutes. */
+    validMovie(movie) {
+        return movie.status_code !== 34
+            && movie.runtime >= 60 && movie.poster_path !== null
+            && movie.adult === false
+            && movie.vote_average > this.state.imdb;
+    }
+
+    /* Fetches a movie when the "RANDOM MOVIE" is clicked */
     onGO = async () => {
-        console.log("valgt genre: " + this.state.genre);
         this.setState({ clicked: true });
         this.getMaxId();
         const query = `${this.apiUrl}${this.randomNumber()}?api_key=${this.apiKey}`;
         fetch(query)
             .then(res => res.json())
             .then((data) => {
-                if (data.status_code !== 34 && data.runtime >= 60 && data.poster_path !== null && data.adult === false) { /* Checks if a movie is found and picture is available */
-                    if (data.vote_average > this.state.imdb) {
-                        if (this.state.genre === "Any") {
-                            this.setState({
-                                movie: data,
-                                clicked: false
-                            });
-                        } else if (this.genreCheck(data.genres)) {
-                            this.setState({
-                                movie: data,
-                                clicked: false
-                            });
-                        } else {
-                            this.onGO();
-                        }
-                    } else {
-                        this.onGO();
-                    }
+                if (this.validMovie(data) && (this.state.genre === "Any" || this.validGenre(data.genres))) {
+                    this.setState({
+                        movie: data,
+                        clicked: false
+                    });
                 } else {
                     this.onGO();
                 }
             });
     };
 
+    /* Displays the chosen movie when its found */
     onRender = (res) => {
 
-        let year = (res.release_date).substring(0, 4);
         let genres = res.genres.map(genre => (genre.name) + " ");
+        let year = (res.release_date).substring(0, 4);
         let hours = Math.floor(res.runtime / 60);
         let mins = res.runtime % 60;
 
@@ -119,11 +117,14 @@ class Movie extends Component {
             </div>);
     };
 
+    /* Event listener to save the chosen IMDB-rating value */
     handleImdb = event => {
         this.setState({
             imdb: event.target.value
         });
     };
+
+    /* Event listener to save the chosen genre value */
     handleGenre = event => {
         this.setState({
             genre: event.target.value
@@ -138,7 +139,7 @@ class Movie extends Component {
                     <div class="css-imdb-rating">
                         <p>GENRE</p>
                         <div style={{ width: '100%' }}>
-                            <div style={{ position: 'relative', padding: '8px 10px 24px 16px' }}>
+                            <div style={{ position: 'relative', padding: '6px 10px 24px 16px' }}>
                                 <select onChange={this.handleGenre} >
                                     <option value="Any">All Genres</option>
                                     {(this.state.genres.map((genre, i) => { return (<option key={i} value={genre}>{genre}</option>); }))}
@@ -149,7 +150,7 @@ class Movie extends Component {
                     <div class="css-imdb-rating">
                         <p>IMDB</p>
                         <div style={{ width: '100%' }}>
-                            <div style={{ position: 'relative', padding: '8px 10px 24px 16px' }}>
+                            <div style={{ position: 'relative', padding: '6px 10px 24px 16px' }}>
                                 <select onChange={this.handleImdb} >
                                     <option value="0">Any score</option>
                                     <option value="9">9 ></option>
@@ -161,7 +162,7 @@ class Movie extends Component {
                         </div>
                     </div>
                     <div class="css-imdb-rating" style={{ paddingBottom: '2em' }}>
-                        <p>UNDER CONSTRUCTION</p>
+                        {/* Another function/filter ?? */}
                     </div>
                     <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
