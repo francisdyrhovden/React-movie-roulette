@@ -138,8 +138,8 @@ class Movie extends Component {
                 <div class="css-left">
                     <div class="css-imdb-rating">
                         <p>GENRE</p>
-                        <div style={{ width: '100%' }}>
-                            <div style={{ position: 'relative', padding: '6px 10px 24px 16px' }}>
+                        <div>
+                            <div class="css-select">
                                 <select onChange={this.handleGenre} >
                                     <option value="Any">All Genres</option>
                                     {(this.state.genres.map((genre, i) => { return (<option key={i} value={genre}>{genre}</option>); }))}
@@ -149,8 +149,8 @@ class Movie extends Component {
                     </div>
                     <div class="css-imdb-rating">
                         <p>IMDB</p>
-                        <div style={{ width: '100%' }}>
-                            <div style={{ position: 'relative', padding: '6px 10px 24px 16px' }}>
+                        <div>
+                            <div class="css-select">
                                 <select onChange={this.handleImdb} >
                                     <option value="0">Any score</option>
                                     <option value="9">9 ></option>

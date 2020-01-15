@@ -155,6 +155,11 @@
   margin-right: 28px;
 }
 
+.css-select {
+  position: relative;
+  padding: 6px 10px 24px 16px; 
+}
+
 .css-right {
   display: -webkit-box;
   display: -webkit-flex;
