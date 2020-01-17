@@ -141,7 +141,7 @@ class Movie extends Component {
                         <div>
                             <div class="css-select">
                                 <select onChange={this.handleGenre} >
-                                    <option value="Any">All Genres</option>
+                                    <option value="Any">Under construction</option>
                                     {(this.state.genres.map((genre, i) => { return (<option key={i} value={genre}>{genre}</option>); }))}
                                 </select>
                             </div>
