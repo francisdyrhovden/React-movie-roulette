@@ -45,7 +45,11 @@
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
   color: #ffffff;
-  background: linear-gradient(128deg,#e21a1a,#e30000);
+  background: #ED213A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, rgb(165, 33, 19), #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* background: linear-gradient(128deg,#e21a1a,#e30000); */
+
   box-shadow: 0 9px 24px 0 rgba(31, 31, 31, 0.43);
   width: 219px;
   height: 40px;
