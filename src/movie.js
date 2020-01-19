@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Spinner } from 'react-mdl';
 import './App.css';
+import Slider from './slider.js';
 
 
 class Movie extends Component {
@@ -162,7 +163,8 @@ class Movie extends Component {
                         </div>
                     </div>
                     <div class="css-imdb-rating" style={{ paddingBottom: '2em' }}>
-                        {/* Another function/filter ?? */}
+                        <p>UNDER CONSTRUCTION</p>
+                        <Slider />
                     </div>
                     <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
