@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Spinner } from 'react-mdl';
 import './App.css';
-import Slider from './slider.js';
 
 
 class Movie extends Component {
@@ -50,7 +49,7 @@ class Movie extends Component {
         const min = 1;
         let max = this.state.maxId;
         const rand = min + Math.floor(Math.random() * (max - min));
-        console.log("RandomId: " + rand);
+        /*console.log("RandomId: " + rand);*/
         return rand;
     }
 
@@ -142,13 +141,13 @@ class Movie extends Component {
                         <div>
                             <div class="css-select">
                                 <select onChange={this.handleGenre} >
-                                    <option value="Any">Under construction</option>
+                                    <option value="Any">Any</option>
                                     {(this.state.genres.map((genre, i) => { return (<option key={i} value={genre}>{genre}</option>); }))}
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="css-imdb-rating">
+                    <div class="css-imdb-rating" style={{ paddingBottom: '2em' }}>
                         <p>IMDB</p>
                         <div>
                             <div class="css-select">
@@ -162,10 +161,7 @@ class Movie extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="css-imdb-rating" style={{ paddingBottom: '2em' }}>
-                        <p>UNDER CONSTRUCTION</p>
-                        <Slider />
-                    </div>
+                    
                     <button class="button-css" onClick={this.onGO}>RANDOM MOVIE</button>
                 </div>
                 <div class="css-entrybox">
